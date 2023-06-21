@@ -1,10 +1,78 @@
 .card {
-	width: 382.87px;
-	height: 306.29px;
-	left: 99px;
-	top: 162.76px;
+	position: relative;
+	overflow: hidden;
 }
-
 .card img {
 	border-radius: 24px;
+	width: 382.87px;
+	height: 306.29px;
+	object-fit: cover;
+	object-position: center;
+}
+
+.card::before {
+	content: "";
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
+	display: none;
+	border-radius: 24px;
+}
+
+.card figcaption {
+	position: absolute;
+	bottom: 20px;
+	padding: 15px;
+	color: white;
+	transform: translateY(100%);
+	transition: 0.8s ease all;
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 22px;
+
+	color: #ffffff;
+}
+
+.card button {
+	position: absolute;
+	right: 20px;
+	top: 15px;
+	width: 63px;
+	height: 23px;
+	border: 1px solid #eb5757;
+	border-radius: 38px;
+	transform: translateY(-200%);
+	background: transparent;
+	color: #eb5757;
+	cursor: pointer;
+}
+
+.card:hover figcaption {
+	transform: translateY(-50%);
+	transition: 0.8s ease all;
+}
+
+.card:hover button {
+	transform: translateY(100%);
+	transition: 0.8s ease all;
+}
+
+.card:hover::before {
+	display: block;
+}
+
+.card__wrapper {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	row-gap: 10px;
+	column-gap: 20px;
+}
+
+.card__wrapper div:nth-child(even) {
+	grid-row: span 2;
+}
+
+.card__wrapper div:nth-child(even) img {
+	height: 582.48px;
 }
