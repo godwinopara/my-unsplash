@@ -13,7 +13,7 @@ const imageReducer = (state, action) => {
 			return { ...state, images: state.images.concat(action.payload) };
 		}
 		case "DELETE_IMAGE": {
-			const updatedImages = state.images.filter((image) => image.id !== action.payload);
+			const updatedImages = state.images.filter((image) => image.id !== action.payload.id);
 			return { ...state, images: updatedImages };
 		}
 		case "TOGGLE_ADD_MODAL": {

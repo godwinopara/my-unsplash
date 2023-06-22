@@ -14,6 +14,7 @@ const AddImage = ({ onClick, onSubmit }) => {
 	const mutation = useMutation(addImage, {
 		onSuccess: (image) => {
 			dispatch({ type: "ADD_IMAGE", payload: image });
+			dispatch({ type: "TOGGLE_ADD_MODAL", payload: false });
 			resetLabel();
 			resetImgUrl();
 		},

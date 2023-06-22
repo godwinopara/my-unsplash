@@ -16,8 +16,6 @@ const addImage = async (image) => {
 
 const deleteImage = async (image) => {
 	const imageToDelete = await axios.delete(`${baseUrl}/${image.id}`);
-	const deleteImage = await imageToDelete.data;
-	return deleteImage;
 };
 
 export { getAllImages, deleteImage, addImage };
