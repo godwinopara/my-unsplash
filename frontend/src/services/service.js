@@ -8,10 +8,16 @@ const getAllImages = async () => {
 	return data;
 };
 
+const addImage = async (image) => {
+	const newImage = await axios.post(baseUrl, image);
+	const data = await newImage.data;
+	return data;
+};
+
 const deleteImage = async (image) => {
 	const imageToDelete = await axios.delete(`${baseUrl}/${image.id}`);
 	const deleteImage = await imageToDelete.data;
 	return deleteImage;
 };
 
-export { getAllImages, deleteImage };
+export { getAllImages, deleteImage, addImage };

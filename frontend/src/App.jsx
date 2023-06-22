@@ -1,35 +1,22 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
 import CardWrapper from "./components/Card/CardWrapper";
 import { useQuery } from "@tanstack/react-query";
 import { getAllImages } from "./services/service";
 import { createPortal } from "react-dom";
-import AddImage from "./components/AddImage/AddImage";
+import AddImage from "./components/AddImage/AddImageForm";
+import imageContext from "./context/imageContext";
+import AddImageModal from "./components/AddImage/AddImageModal";
 
 function App() {
-	const [images, setImages] = useState([]);
-	const [showAddImageModal, setShowAddImageModal] = useState(true);
-
-	const query = useQuery(["images"], getAllImages, {
-		onSuccess: (images) => {
-			setImages(images);
-		},
-	});
-
-	const closeAddImageModal = () => {
-		setShowAddImageModal(false);
-	};
-
-	const displayAddImageModal = () => {
-		return createPortal(<AddImage onClick={closeAddImageModal} />, document.body);
-	};
+	const [state, dispatch] = useContext(imageContext);
 
 	return (
 		<>
-			{showAddImageModal && displayAddImageModal()}
+			<AddImageModal />
 			<Header />
-			<CardWrapper images={images} />
+			<CardWrapper images={state.images} />
 		</>
 	);
 }
