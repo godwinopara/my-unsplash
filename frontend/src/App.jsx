@@ -9,6 +9,7 @@ import AddImage from "./components/AddImage/AddImage";
 
 function App() {
 	const [images, setImages] = useState([]);
+	const [showAddImageModal, setShowAddImageModal] = useState(true);
 
 	const query = useQuery(["images"], getAllImages, {
 		onSuccess: (images) => {
@@ -16,13 +17,17 @@ function App() {
 		},
 	});
 
-	const displayAddImageModal = (second) => {
-		return createPortal(<AddImage />, document.body);
+	const closeAddImageModal = () => {
+		setShowAddImageModal(false);
+	};
+
+	const displayAddImageModal = () => {
+		return createPortal(<AddImage onClick={closeAddImageModal} />, document.body);
 	};
 
 	return (
 		<>
-			{displayAddImageModal()}
+			{showAddImageModal && displayAddImageModal()}
 			<Header />
 			<CardWrapper images={images} />
 		</>
