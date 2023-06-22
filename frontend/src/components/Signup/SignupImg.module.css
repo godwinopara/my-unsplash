@@ -1,0 +1,9 @@
+.img__wrapper {
+	background-image: url("../../assets/signup.jpg");
+	min-height: 100vh;
+	width: 40%;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: fixed;
+}

@@ -1,23 +1,17 @@
-import { useContext, useState } from "react";
-import "./App.css";
-import Header from "./components/Header/Header";
-import CardWrapper from "./components/Card/CardWrapper";
-import { useQuery } from "@tanstack/react-query";
-import { getAllImages } from "./services/service";
-import { createPortal } from "react-dom";
-import AddImage from "./components/AddImage/AddImageForm";
-import imageContext from "./context/imageContext";
-import AddImageModal from "./components/AddImage/AddImageModal";
+import Home from "./pages/Home";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-	const [state, dispatch] = useContext(imageContext);
-
 	return (
-		<>
-			<AddImageModal />
-			<Header />
-			<CardWrapper images={state.images} />
-		</>
+		<BrowserRouter>
+			<Routes>
+				<Route path="/login" element={<Login />} />
+				<Route path="/signup" element={<Signup />} />
+				<Route path="/" element={<Home />} />
+			</Routes>
+		</BrowserRouter>
 	);
 }
 

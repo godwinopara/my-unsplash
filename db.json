@@ -6,11 +6,6 @@
       "id": 5
     },
     {
-      "url": "https://images.unsplash.com/photo-1517649763962-0c623066013b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8c3BvcnRzfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
-      "label": "group of cyclist bike championship",
-      "id": 6
-    },
-    {
       "url": "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8c3BvcnRzfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
       "label": "woman doing weight lifting",
       "id": 7
@@ -21,19 +16,9 @@
       "id": 8
     },
     {
-      "url": "https://images.unsplash.com/photo-1598133894008-61f7fdb8cc3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80",
-      "label": "puppy with chains",
+      "label": "A person standing ontop of a montain pointing to the sky",
+      "url": "https://images.unsplash.com/photo-1634455257140-b5ab16f0770e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHVuc3BhbHNofGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
       "id": 9
-    },
-    {
-      "url": "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8c3BvcnRzfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
-      "label": "woman doing weight lifting",
-      "id": 11
-    },
-    {
-      "label": "photo of a camel in front of a pyramid",
-      "url": "https://images.unsplash.com/photo-1610198437404-7b8af9f1c481?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-      "id": 12
     }
   ]
 }
