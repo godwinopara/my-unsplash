@@ -1,30 +1,34 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const logger = require("./utils/logger")
-const dotenv = require("dotenv").config()
+const dotenv = require("dotenv");
+const logger = require("./utils/logger");
+const imageController = require("../controller/imageController");
+// const middleware = require("./utils/middleware");
 
+dotenv.config();
 
 const app = express();
 
-// CONNECTION TO MONGODB
+// MIDDLEWARES
 
+app.use(express.json());
+// app.use(middleware.requestLogger());
+
+// CONNECTION TO MONGODB
 mongoose
-    .connect(process.env.MONGODB_URL)
-    .then(result => {
-        logger.info("connect to MongoDB")
-    })
-    .catch(error){
-        logger.error(error)
-}
-    
+	.connect(process.env.MONGODB_URL)
+	.then(() => {
+		logger.info("connect to MongoDB");
+	})
+	.catch((error) => {
+		logger.error(error);
+	});
 
 // ROUTERS
+app.use("/api/images", imageController);
 
-app.use("/api/images")
-
-
-
-
+// const { PORT } = process.env.PORT;
+// MIDDLEWARES
 const PORT = 5000;
 
 app.listen(PORT, () => console.log(`running on port ${PORT}`));
