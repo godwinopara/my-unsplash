@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:3001/images";
+const baseUrl = "http://localhost:5170/images";
 
 const getAllImages = async () => {
 	const allImages = await axios.get(baseUrl);

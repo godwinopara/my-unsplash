@@ -20,5 +20,23 @@
       "url": "https://images.unsplash.com/photo-1634455257140-b5ab16f0770e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHVuc3BhbHNofGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
       "id": 9
     }
+  ],
+  "users": [
+    {
+      "firstname": "Godwin",
+      "lastname": "Opara",
+      "email": "godwinopara62@gmail.com",
+      "username": "godwinsmith",
+      "password": "godon2009",
+      "id": 1
+    },
+    {
+      "firstname": "kelechi",
+      "lastname": "Opara",
+      "email": "kelebs4luv@gmail.com",
+      "username": "cakesbykel",
+      "password": "kelechi",
+      "id": 2
+    }
   ]
 }

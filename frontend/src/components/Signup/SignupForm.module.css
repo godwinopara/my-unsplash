@@ -2,7 +2,9 @@
 	width: 40%;
 	margin-top: 80px;
 	position: relative;
-	left: 650px;
+	/* left: 650px; */
+	margin-left: auto;
+	right: 100px;
 	top: 0;
 }
 
