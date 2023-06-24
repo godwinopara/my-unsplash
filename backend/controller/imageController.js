@@ -14,7 +14,7 @@ imageRouter.get("/", async (request, response) => {
 imageRouter.post("/", async (request, response) => {
 	const { url, label } = request.body;
 	const image = await new Image({ url, label });
-	image.save();
+	await image.save();
 	response.status(201).json({ image });
 });
 
