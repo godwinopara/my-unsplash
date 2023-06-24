@@ -4,9 +4,11 @@ const jwt = require("jsonwebtoken");
 const User = require("../model/user");
 require("express-async-errors");
 
+const { verifyToken } = require("../utils/middleware");
+
 // GET ALL USER ROUTE
 
-userRouter.get("/", async (request, response) => {
+userRouter.get("/", verifyToken, async (request, response) => {
 	const users = await User.find({});
 	response.json(users);
 });

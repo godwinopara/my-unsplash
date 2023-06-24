@@ -1,4 +1,8 @@
+const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
 const logger = require("./logger");
+
+dotenv.config();
 
 const requestLogger = (request, response, next) => {
 	logger.info("Method:", request.method);
@@ -18,12 +22,32 @@ const errorHandler = (error, request, response, next) => {
 	if (error.name === "ValidationError") {
 		response.status(400).json({ error: error.message });
 	} else if (error.name === "JsonWebTokenError") {
-		response.status(400).json({ error: error.message });
+		response.status(400).json({ error: "Unauthorized" });
 	} else if (error.name === "TokenExpiredError") {
-		response.status(401).json({ error: error.message });
+		response.status(401).json({ error: "Session Expired" });
 	}
 
 	next(error);
 };
 
-module.exports = { requestLogger, errorHandler, unknownEndpoint };
+const getToken = (request, response, next) => {
+	const authorization = request.get("Authorization");
+	if (authorization && authorization.startsWith("Bearer ")) {
+		request.token = authorization.replace("Bearer ", "");
+	} else {
+		request.token = null;
+	}
+	next();
+};
+
+const verifyToken = (request, response, next) => {
+	const token = jwt.verify(request.token, process.env.SECRET);
+	if (token) {
+		request.user = token;
+	} else {
+		request.user = null;
+	}
+	next();
+};
+
+module.exports = { requestLogger, getToken, errorHandler, verifyToken, unknownEndpoint };

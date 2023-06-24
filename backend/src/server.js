@@ -2,9 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const logger = require("./utils/logger");
-const imageController = require("../controller/imageController");
-const authController = require("../controller/authController");
+const imageController = require("./controller/imageController");
+const authController = require("./controller/authController");
 const middleware = require("./utils/middleware");
+require("express-async-errors");
 
 dotenv.config();
 
@@ -14,6 +15,8 @@ const app = express();
 
 app.use(express.json());
 app.use(middleware.requestLogger);
+app.use(middleware.getToken);
+// app.use(middleware.verifyToken);
 
 // CONNECTION TO MONGODB
 mongoose
@@ -26,7 +29,7 @@ mongoose
 	});
 
 // ROUTERS
-app.use("/api/images", imageController);
+app.use("/api/images", middleware.verifyToken, imageController);
 app.use("/api/users", authController);
 
 // ERROR HANDLING MIDDLEWARES
