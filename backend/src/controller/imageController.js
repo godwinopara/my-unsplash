@@ -19,4 +19,14 @@ imageRouter.post("/", middleware.verifyToken, async (request, response) => {
 	response.status(201).json({ image });
 });
 
+// DELETE IMAGE
+
+imageRouter.delete("/:id", middleware.verifyToken, async (request, response) => {
+	// eslint-disable-next-line
+	const id = request.params.id;
+
+	await Image.findByIdAndDelete(id);
+	response.status(204).end();
+});
+
 module.exports = imageRouter;
