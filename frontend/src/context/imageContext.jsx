@@ -36,7 +36,7 @@ export const ImageContextProvider = ({ children }) => {
 
 	const query = useQuery(["images"], getAllImages, {
 		onSuccess: (images) => {
-			dispatch({ type: "SET_IMAGE", payload: images });
+			dispatch({ type: "SET_IMAGE", payload: images.images });
 		},
 	});
 

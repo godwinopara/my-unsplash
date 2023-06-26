@@ -1,6 +1,28 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:5170/images";
+const baseUrl = "http://localhost:5000/api/images";
+
+const getToken = () => {
+	const userToken = JSON.parse(localStorage.getItem("userToken"));
+	if (userToken) {
+		return userToken.token;
+	}
+	return null;
+};
+
+axios.interceptors.request.use(
+	function (config) {
+		const token = getToken();
+		console.log(token, "===============");
+		if (token) {
+			config.headers.Authorization = `Bearer ${token}`;
+		}
+		return config;
+	},
+	function error(error) {
+		return Promise.reject(error);
+	}
+);
 
 const getAllImages = async () => {
 	const allImages = await axios.get(baseUrl);

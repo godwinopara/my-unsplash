@@ -13,6 +13,14 @@ userRouter.get("/", verifyToken, async (request, response) => {
 	response.json(users);
 });
 
+userRouter.put("/:id", verifyToken, async (request, response) => {
+	// eslint-disable-next-line
+	const id = request.params.id;
+
+	const user = await User.findById(id);
+	response.send(user.id);
+});
+
 // ADD NEW USER ROUTE
 
 userRouter.post("/", async (request, response) => {

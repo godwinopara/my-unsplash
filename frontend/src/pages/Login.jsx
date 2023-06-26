@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Logo from "../assets/my_unsplash_logo.svg";
 import { useField } from "../hooks/index";
 import { login } from "../services/auth";
@@ -13,8 +14,9 @@ const Login = () => {
 	const handleSubmitForm = async (e) => {
 		e.preventDefault();
 		const userData = { email: email.value, password: password.value };
-		const valid = await login(userData);
-		if (valid) {
+		const data = await login(userData);
+		if (data) {
+			localStorage.setItem("userToken", JSON.stringify(data));
 			navigate("/");
 		}
 	};

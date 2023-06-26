@@ -6,6 +6,7 @@ import CardWrapper from "../components/Card/CardWrapper";
 
 const Home = () => {
 	const [state, dispatch] = useContext(imageContext);
+	console.log(state);
 
 	return (
 		<>

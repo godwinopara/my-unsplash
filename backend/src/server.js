@@ -1,10 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const cors = require("cors");
 const logger = require("./utils/logger");
 const imageController = require("./controller/imageController");
 const authController = require("./controller/authController");
 const middleware = require("./utils/middleware");
+
 require("express-async-errors");
 
 dotenv.config();
@@ -14,6 +16,7 @@ const app = express();
 // MIDDLEWARES
 
 app.use(express.json());
+app.use(cors());
 app.use(middleware.requestLogger);
 app.use(middleware.getToken);
 // app.use(middleware.verifyToken);
