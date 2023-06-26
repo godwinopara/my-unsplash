@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { createContext, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 import { getAllImages } from "../services/service";
 
 // IMAGE REDUCER
@@ -19,6 +19,12 @@ const imageReducer = (state, action) => {
 		case "TOGGLE_ADD_MODAL": {
 			return { ...state, displayAddImageForm: action.payload };
 		}
+		case "SET_USER": {
+			return { ...state, user: action.payload };
+		}
+		default: {
+			return state;
+		}
 	}
 };
 
@@ -30,7 +36,18 @@ const imageContext = createContext();
 /* =================================== */
 
 export const ImageContextProvider = ({ children }) => {
-	const [state, dispatch] = useReducer(imageReducer, { images: [], displayAddImageForm: false });
+	const [state, dispatch] = useReducer(imageReducer, {
+		images: [],
+		user: "",
+		displayAddImageForm: false,
+	});
+
+	useEffect(() => {
+		const userToken = JSON.parse(localStorage.getItem("userToken"));
+		if (userToken) {
+			dispatch({ type: "SET_USER", payload: userToken.username });
+		}
+	}, []);
 
 	// Query database for all images and store it on state
 

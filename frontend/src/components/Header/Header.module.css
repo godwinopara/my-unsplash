@@ -17,6 +17,11 @@
 	margin-left: 24px;
 }
 
+.btn__wrapper {
+	display: flex;
+	align-items: center;
+}
+
 .btn {
 	height: 55px;
 	width: 137px;
@@ -30,4 +35,15 @@
 	outline: none;
 	border: none;
 	cursor: pointer;
+}
+
+.transparent {
+	background-color: transparent;
+	border: 1px solid #4f4f4f;
+	display: inline-flex;
+	margin-right: 15px;
+	color: #4f4f4f;
+	text-decoration: none;
+	align-items: center;
+	justify-content: center;
 }

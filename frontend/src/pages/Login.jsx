@@ -1,14 +1,16 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import Logo from "../assets/my_unsplash_logo.svg";
 import { useField } from "../hooks/index";
 import { login } from "../services/auth";
 import styles from "./Login.module.css";
 import { Link, useNavigate } from "react-router-dom";
+import imageContext from "../context/imageContext";
 
 const Login = () => {
 	const { reset: resetEmail, ...email } = useField("text");
 	const { reset: resetPassword, ...password } = useField("password");
 
+	const [state, dispatch] = useContext(imageContext);
 	const navigate = useNavigate();
 
 	const handleSubmitForm = async (e) => {
@@ -17,6 +19,7 @@ const Login = () => {
 		const data = await login(userData);
 		if (data) {
 			localStorage.setItem("userToken", JSON.stringify(data));
+			dispatch({ type: "SET_USER", payload: data.username });
 			navigate("/");
 		}
 	};

@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/my_unsplash_logo.svg";
 import { useField } from "../../hooks";
 import styles from "./Header.module.css";
@@ -26,9 +26,17 @@ const Header = () => {
 					<img src={logo} alt="logo" />
 					<input className={styles.input} {...search} />
 				</div>
-				<button onClick={showAddImageFormModal} className={styles.btn}>
-					Add Photo
-				</button>
+				<div className={styles.btn__wrapper}>
+					{state.user === "" && (
+						<Link to="/login" className={` ${styles.btn} ${styles.transparent} `}>
+							Log In
+						</Link>
+					)}
+
+					<button onClick={showAddImageFormModal} className={styles.btn}>
+						Add Photo
+					</button>
+				</div>
 			</div>
 		</header>
 	);
