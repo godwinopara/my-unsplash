@@ -1,4 +1,5 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import logo from "../../assets/my_unsplash_logo.svg";
 import { useField } from "../../hooks";
 import styles from "./Header.module.css";
@@ -8,8 +9,15 @@ const Header = () => {
 	const { reset: resetSearch, ...search } = useField("text");
 	const [state, dispatch] = useContext(imageContext);
 
+	const navigate = useNavigate();
+
 	const showAddImageFormModal = () => {
-		dispatch({ type: "TOGGLE_ADD_MODAL", payload: true });
+		const token = JSON.parse(localStorage.getItem("userToken"));
+		if (token) {
+			dispatch({ type: "TOGGLE_ADD_MODAL", payload: true });
+		} else {
+			navigate("/login");
+		}
 	};
 	return (
 		<header className="container">

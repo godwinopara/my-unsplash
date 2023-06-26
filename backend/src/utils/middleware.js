@@ -22,9 +22,9 @@ const errorHandler = (error, request, response, next) => {
 	if (error.name === "ValidationError") {
 		response.status(400).json({ error: error.message });
 	} else if (error.name === "JsonWebTokenError") {
-		response.status(400).json({ error: "Unauthorized" });
+		response.status(400).json({ error: "unauthorized" });
 	} else if (error.name === "TokenExpiredError") {
-		response.status(401).json({ error: "Session Expired" });
+		response.status(401).json({ error: "session expired" });
 	}
 
 	next(error);

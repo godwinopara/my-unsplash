@@ -32,7 +32,7 @@ mongoose
 	});
 
 // ROUTERS
-app.use("/api/images", middleware.verifyToken, imageController);
+app.use("/api/images", imageController);
 app.use("/api/users", authController);
 
 // ERROR HANDLING MIDDLEWARES

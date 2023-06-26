@@ -1,5 +1,6 @@
 const imageRouter = require("express").Router();
 const Image = require("../model/image");
+const middleware = require("../utils/middleware");
 require("express-async-errors");
 
 // GET ALL IMAGES
@@ -11,7 +12,7 @@ imageRouter.get("/", async (request, response) => {
 
 // ADD NEW IMAGES
 
-imageRouter.post("/", async (request, response) => {
+imageRouter.post("/", middleware.verifyToken, async (request, response) => {
 	const { url, label } = request.body;
 	const image = await new Image({ url, label });
 	await image.save();
