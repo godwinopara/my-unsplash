@@ -88,3 +88,16 @@
 	display: block;
 	text-decoration: none;
 }
+
+.user__settings button {
+	margin: 10px 16px;
+	padding-top: 15px;
+	background-color: transparent;
+	border: none;
+	font-size: 16px;
+	color: #111;
+	width: 80%;
+	text-align: left;
+	border-top: 1px solid #111;
+	cursor: pointer;
+}

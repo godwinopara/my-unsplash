@@ -26,6 +26,12 @@ const Header = () => {
 		setShowSettings(!showSettings);
 	};
 
+	const handleClickLogout = (e) => {
+		e.preventDefault();
+		localStorage.removeItem("userToken");
+		window.location = "/";
+	};
+
 	return (
 		<header className={`container ${styles.header}`}>
 			<div className={styles.header__container}>
@@ -43,24 +49,24 @@ const Header = () => {
 					<button onClick={showAddImageFormModal} className={styles.btn}>
 						Add Photo
 					</button>
-					<div onClick={toggleSettings} className={styles.image__wrapper}>
-						<img src={imagePlaceholder} alt="image placeholder" />
+					{state.user !== "" && (
+						<div onClick={toggleSettings} className={styles.image__wrapper}>
+							<img src={imagePlaceholder} alt="image placeholder" />
 
-						{/* User settings */}
-						{showSettings && (
-							<ul className={styles.user__settings}>
-								<li>
-									<Link href="/profile">View Profile</Link>
-								</li>
-								<li>
-									<Link href="">Settings</Link>
-								</li>
-								<li>
-									<Link href="">Logout @{state.user}</Link>
-								</li>
-							</ul>
-						)}
-					</div>
+							{/* User settings */}
+							{showSettings && (
+								<ul className={styles.user__settings}>
+									<li>
+										<Link href="/profile">View Profile</Link>
+									</li>
+									<li>
+										<Link href="/settings">Settings</Link>
+									</li>
+									<button onClick={handleClickLogout}>Logout @{state.user}</button>
+								</ul>
+							)}
+						</div>
+					)}
 				</div>
 			</div>
 		</header>
