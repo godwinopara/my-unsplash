@@ -40,6 +40,7 @@ export const ImageContextProvider = ({ children }) => {
 		images: [],
 		user: "",
 		displayAddImageForm: false,
+		displayDeleteImageForm: false,
 	});
 
 	useEffect(() => {
