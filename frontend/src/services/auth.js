@@ -14,4 +14,10 @@ const login = async (userData) => {
 	return data;
 };
 
-export { signUp, login };
+const confirmUser = async (userData) => {
+	const checkUser = await axios.post(`${baseUrl}/confirm-password`, userData);
+	const data = await checkUser.data;
+	return data;
+};
+
+export { signUp, login, confirmUser };

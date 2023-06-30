@@ -19,6 +19,9 @@ const imageReducer = (state, action) => {
 		case "TOGGLE_ADD_MODAL": {
 			return { ...state, displayAddImageForm: action.payload };
 		}
+		case "TOGGLE_DELETE_MODAL": {
+			return { ...state, displayDeleteImageForm: action.payload };
+		}
 		case "SET_USER": {
 			return { ...state, user: action.payload };
 		}

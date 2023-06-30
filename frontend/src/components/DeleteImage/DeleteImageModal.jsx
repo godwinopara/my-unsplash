@@ -1,9 +1,14 @@
 import { createPortal } from "react-dom";
 import DeleteImageForm from "./DeleteImageForm";
-// useCont;
+import { useContext } from "react";
+import imageContext from "../../context/imageContext";
 
 const DeleteImageModal = () => {
-	return <div>{createPortal(<DeleteImageForm />, document.body)}</div>;
+	const [state, dispatch] = useContext(imageContext);
+
+	return (
+		<div>{state.displayDeleteImageForm && createPortal(<DeleteImageForm />, document.body)}</div>
+	);
 };
 
 export default DeleteImageModal;

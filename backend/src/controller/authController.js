@@ -13,6 +13,8 @@ userRouter.get("/", verifyToken, async (request, response) => {
 	response.json(users);
 });
 
+// EDIT USER DETAILS
+
 userRouter.put("/:id", verifyToken, async (request, response) => {
 	// eslint-disable-next-line
 	const id = request.params.id;
@@ -54,6 +56,21 @@ userRouter.post("/login", async (request, response) => {
 	const token = jwt.sign(userToken, process.env.SECRET);
 
 	response.status(200).json({ token, username: user.username });
+});
+
+// VERIFY USER
+
+userRouter.post("/confirm-password", async (request, response) => {
+	const { username, password } = request.body;
+
+	const user = await User.findOne({ username });
+	const verifyPassword = await bcrypt.compare(password, user.passwordHash);
+	console.log(verifyPassword);
+	if (verifyPassword) {
+		response.status(200).json({ success: true });
+	} else {
+		response.status(404).json({ success: false });
+	}
 });
 
 module.exports = userRouter;
